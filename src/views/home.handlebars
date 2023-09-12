@@ -1,0 +1,50 @@
+<div class="menu">
+  <h1>Ecommerce</h1>
+  <div class="anclas">
+    <a href="/">Home</a>
+    <a href="/realTimeProducts">Inventario</a>
+    <a href="/api/sessions/logout">Logout</a>
+  </div>
+</div>
+
+<div id="verProductsHome">
+
+  <h2>Productos</h2>
+
+  <div id="mostrarProductos">   
+    {{#if products}}
+      {{#each products}}
+          <div id="card">
+            <div class="infoCard">
+              <p><span class="keyDer"> ID: </span>{{this._id}}</p>
+              <p><span class="keyDer"> TITULO: </span> {{this.title}}</p>
+              <p><span class="keyDer"> DESCRIPCION: </span> {{this.description}}</p>
+              <p><span class="keyDer"> PRECIO: </span> ${{this.price}}</p>
+              <p><span class="keyDer"> THUMBNAIL: </span> {{this.thumbnail}} </p>
+              <p><span class="keyDer"> CODIGO: </span> {{this.code}}  </p>
+              <p><span class="keyDer"> STOCK: </span> {{this.stock}}</p>
+              <p><span class="keyDer"> CATEGORIA: </span> {{this.category}}</p>
+              <p><span class="keyDer"> STATUS: </span> {{this.status}} </p>
+            </div>
+            <div class="botonera">
+              <form action="http://localhost:8080/api/carts/64b884bd6ddf026971a83073/products/{{this._id}}" method="post">
+                <input type="submit" class="buttonAddCart" value="Agregar al carrito">
+              </form>
+            </div>                    
+          </div>
+      {{/each}} 
+    {{/if}}
+  </div>
+
+  <div class="paginacion">
+    {{#if pagination.hasPrevPage}}
+      <a href={{pagination.prevLink}}><button class="buttonPaginacion">Anterior</button></a>
+    {{/if}}
+
+    {{#if pagination.hasNextPage}}
+      <a href={{pagination.nextLink}}><button class="buttonPaginacion">Siguiente</button></a>
+    {{/if}}
+  </div>
+
+</div>
+
