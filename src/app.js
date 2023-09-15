@@ -9,9 +9,9 @@ import passport from 'passport'
 
 import __dirname from './utils/utils.js'
 import routers from './routes/index.router.js'
-import {ProductManagerDB} from './models/daos/mongo/products.mongo.dao.js'
-import {MessagesManagerDB} from './models/daos/mongo/messages.mongo.dao.js'
-import {CartsManagerDB} from './models/daos/mongo/carts.mongo.dao.js'
+import { ProductManagerDB } from './models/daos/mongo/products.mongo.dao.js'
+import { MessagesManagerDB } from './models/daos/mongo/messages.mongo.dao.js'
+import { CartsManagerDB } from './models/daos/mongo/carts.mongo.dao.js'
 import initializePassport from './config/passport.config.js'
 import CONFIG from './config/dotEnv.config.js'
 
@@ -104,8 +104,3 @@ io.on('connection', async socket => {
     socket.emit('carts', result)
   })
 })
-
-
-
-
-

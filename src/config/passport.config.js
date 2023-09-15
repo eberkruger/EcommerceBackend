@@ -8,7 +8,7 @@ import { createHash, isValidPassword } from '../utils/utils.js'
 import CONFIG from './dotEnv.config.js'
 
 const LocalStrategy = local.Strategy
-const  usersDAO  = getDAOS()
+const  {usersDAO}  = getDAOS()
 
 // Función para inicializar Passport y configurar las estrategias
 const initializePassport = () => {

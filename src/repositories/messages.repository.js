@@ -1,6 +1,6 @@
 import { getDAOS } from "../models/daos/index.daos.js"
 
-const chatsDAO  = getDAOS()
+const {chatsDAO}  = getDAOS()
 
 export default class ChatsRepository {
   constructor() {

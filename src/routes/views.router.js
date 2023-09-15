@@ -5,7 +5,7 @@ import viewsController from "../controllers/views.controller.js"
 const router = Router()
 
 /* home */
-router.get('/', authorization('USER'), viewsController.getAllProducts)
+router.get('/', viewsController.getAllProducts)
 
 /* realTimeProducts */
 router.get('/realtimeproducts', authorization('ADMIN'), viewsController.realtimeproducts)

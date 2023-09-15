@@ -1,7 +1,7 @@
 import { getDAOS } from "../models/daos/index.daos.js"
 import UserDTO from "../models/dtos/users.dto.js"
 
-const usersDAO  = getDAOS()
+const {usersDAO} = getDAOS()
 
 export default class UsersRepository {
   constructor() {

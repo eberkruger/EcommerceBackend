@@ -7,9 +7,11 @@ const chatsDAO = ChatsDAO
 const cartsDAO = CartsDAO
 
 export const getDAOS = () => {
-  usersDAO,
-  ticketsDAO,
-  productsDAO,
-  chatsDAO,
-  cartsDAO
+  return {
+    usersDAO,
+    ticketsDAO,
+    productsDAO,
+    chatsDAO,
+    cartsDAO
+  }
 }

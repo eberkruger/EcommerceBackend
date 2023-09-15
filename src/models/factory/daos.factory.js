@@ -11,7 +11,7 @@ console.log(`Trabajando con persistencia en ${CONFIG.PERSISTENCE}`)
 switch (CONFIG.PERSISTENCE) {
 
   case 'MONGO': {
-    const { UsersManagerDB } = await import('../daos/mongo/users.mongo.dao.js')
+    const {default: UsersManagerDB } = await import('../daos/mongo/users.mongo.dao.js')
     UsersDAO = new UsersManagerDB()
 
     const { ProductManagerDB } = await import('../daos/mongo/products.mongo.dao.js')
@@ -34,4 +34,4 @@ switch (CONFIG.PERSISTENCE) {
   }
 }
 
-export {UsersDAO, ProductsDAO, CartsDAO, TicketsDAO, ChatsDAO}
+export { UsersDAO, ProductsDAO, CartsDAO, TicketsDAO, ChatsDAO }

@@ -1,6 +1,6 @@
 import userModel from "../../schema/users.schema.js"
 
-export class UsersManagerDB {
+export default class UsersManagerDB {
 
   createUser = async (user) => {
     return await userModel.create(user)
