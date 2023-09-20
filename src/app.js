@@ -7,7 +7,7 @@ import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import passport from 'passport'
 
-import __dirname from './utils/utils.js'
+import __dirname from './utils.path.js'
 import routers from './routes/index.router.js'
 import { ProductManagerDB } from './models/daos/mongo/products.mongo.dao.js'
 import { MessagesManagerDB } from './models/daos/mongo/messages.mongo.dao.js'
@@ -31,8 +31,9 @@ app.use(express.urlencoded({ extended: true }))
 
 /* handlebars */
 app.engine('handlebars', handlebars.engine())
-app.set('views', `${__dirname}/views`)
 app.set('view engine', 'handlebars')
+app.set('views', `${__dirname}/views`)
+console.log(__dirname)
 
 /* server */
 server.listen(CONFIG.PORT, () => {

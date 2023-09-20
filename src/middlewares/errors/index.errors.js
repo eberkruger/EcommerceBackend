@@ -15,6 +15,6 @@ export default async (error, req, res, next) => {
     case ErrorEnum.PRODUCT_ID_DOES_NOT_EXIST:
       return res.status(400).send({ status: "error", error: error.name, cause: error.cause })
     default:
-      return res.status(400).send({ status: "error", message: "Unhandled Error" })
+      return res.status(400).send({ status: "error", message: "Unhandled Error", error })
   }
 }

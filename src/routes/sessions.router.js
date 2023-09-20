@@ -15,7 +15,7 @@ router.post('/login', passport.authenticate('login', { failureRedirect: '/api/se
 
 router.get('/loginError', usersController.loginError)
 
-router.get('/github', passport.authenticate('github', { scope: ['user:email'] }), usersController.github)
+router.get('/github', passport.authenticate('github', { scope: 'user:email' }), usersController.github)
 
 router.get('/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), usersController.githubcallback)
 
