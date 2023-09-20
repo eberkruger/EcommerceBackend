@@ -28,8 +28,8 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   try {
-    const { pid } = req.params
-    const product = await productService.getById(pid)
+    const id = req.params.pid
+    const product = await productService.getById(id)
     !product ? res.status(404).json({ error: "Product not found" }) : res.status(200).json(product)
   } catch (error) {
     console.log(error)

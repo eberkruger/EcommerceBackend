@@ -14,6 +14,7 @@ import { MessagesManagerDB } from './models/daos/mongo/messages.mongo.dao.js'
 import { CartsManagerDB } from './models/daos/mongo/carts.mongo.dao.js'
 import initializePassport from './config/passport.config.js'
 import CONFIG from './config/dotEnv.config.js'
+import errorHandler from './middlewares/errors/index.errors.js'
 
 const productManagerDB = new ProductManagerDB()
 const messagesManagerDB = new MessagesManagerDB()
@@ -64,6 +65,8 @@ initializePassport()
 
 /* routers */
 app.use('/', routers)
+
+app.use(errorHandler)
 
 /* webSocket */
 io.on('connection', async socket => {
