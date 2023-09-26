@@ -4,7 +4,7 @@ const getAllProducts = async (req, res) => {
   const { limit = 4, page, sort, query } = req.query
   const products = await productService.getAll(limit, page, sort, query)
 
-  console.log(products)
+  //console.log(products)
 
   const url = '/?'
   products.prevLink = products.hasPrevPage ? `${url}page=${products.prevPage}` : null

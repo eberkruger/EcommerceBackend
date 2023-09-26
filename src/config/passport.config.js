@@ -19,7 +19,7 @@ const initializePassport = () => {
 
       try {
         // Verificar si el usuario ya existe en la base de datos
-        let userFound = await usersDAO.getUser({ email: username })
+        let userFound = await usersDAO.getUser(email)
         if (userFound) return done(null, false, { message: 'User already exists' })
 
         // Verificar si el usuario está registrándose como administrador
@@ -45,10 +45,10 @@ const initializePassport = () => {
 
   // Estrategia para el inicio de sesión de usuarios locales
   passport.use('login', new LocalStrategy({ usernameField: 'email' },
-    async (username, password, done) => {
+    async (email, password, done) => {
       try {
         // Buscar al usuario en la base de datos
-        let userFound = await usersDAO.getUser({ email: username })
+        let userFound = await usersDAO.getUser(email)
         if (!userFound) return done(null, false, { message: 'User not found' })
         if (!isValidPassword(userFound, password)) return done(null, false, { message: 'Invalid password' })
         done(null, userFound)
