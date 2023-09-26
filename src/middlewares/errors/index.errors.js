@@ -1,4 +1,5 @@
 import { ErrorEnum } from "./enums.js"
+import { addLogger } from "../logs/logger.js"
 
 export default async (error, req, res, next) => {
   switch (error.code) {
@@ -15,6 +16,6 @@ export default async (error, req, res, next) => {
     case ErrorEnum.PRODUCT_ID_DOES_NOT_EXIST:
       return res.status(400).send({ status: "error", error: error.name, cause: error.cause })
     default:
-      return res.status(400).send({ status: "error", message: "Unhandled Error", error })
+      return res.status(400).send({ status: "error", message: "Unhandled Error", cause: error.cause })
   }
 }

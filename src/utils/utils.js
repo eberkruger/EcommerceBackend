@@ -6,9 +6,7 @@ export const createHash = password => bcrypt.hashSync(password, bcrypt.genSaltSy
 export const isValidPassword = (user, password) => bcrypt.compareSync(password, user.password)
 
 const __filename = fileURLToPath(import.meta.url)
-console.log(__filename)
 const __dirname = path.dirname(__filename)
-console.log(__dirname)
 
 export default __dirname
 

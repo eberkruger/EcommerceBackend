@@ -11,7 +11,8 @@ const CONFIG = {
   CALLBACK_URL : process.env.CALLBACK_URL,
   ADMIN_EMAIL : process.env.ADMIN_EMAIL,
   ADMIN_PWD : process.env.ADMIN_PWD,
-  PERSISTENCE : process.env.PERSISTENCE
+  PERSISTENCE : process.env.PERSISTENCE,
+  NODE_ENV : process.env.NODE_ENV,
 }
 
 export default CONFIG

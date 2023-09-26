@@ -1,6 +1,9 @@
 # DB APP.JS
 MONGO_DB_URL='mongodb+srv://eberkruger:zU415sC6F3UgAK1d@backendcoder.je3pu0q.mongodb.net/ecommerce'
 MONGO_SECRET='secretCoder'
+PERSISTENCE='MONGO'
+PORT='8080'
+NODE_ENV='production'
 
 # PASSPORT.CONFIG.JS || GitHubStrategy 
 CLIENT_ID='3709fb060b503c3748fc'

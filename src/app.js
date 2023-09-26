@@ -15,6 +15,7 @@ import { CartsManagerDB } from './models/daos/mongo/carts.mongo.dao.js'
 import initializePassport from './config/passport.config.js'
 import CONFIG from './config/dotEnv.config.js'
 import errorHandler from './middlewares/errors/index.errors.js'
+import { addLogger } from './middlewares/logs/logger.js'
 
 const productManagerDB = new ProductManagerDB()
 const messagesManagerDB = new MessagesManagerDB()
@@ -33,7 +34,9 @@ app.use(express.urlencoded({ extended: true }))
 app.engine('handlebars', handlebars.engine())
 app.set('view engine', 'handlebars')
 app.set('views', `${__dirname}/views`)
-console.log(__dirname)
+
+/* Logger */
+app.use(addLogger)
 
 /* server */
 server.listen(CONFIG.PORT, () => {
