@@ -7,6 +7,8 @@ import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import passport from 'passport'
 import cookieParser from 'cookie-parser'
+import swaggerJSDoc from 'swagger-jsdoc'
+import swaggerUiExpress from 'swagger-ui-express'
 
 import __dirname from './utils.path.js'
 import routers from './routes/index.router.js'
@@ -41,6 +43,22 @@ app.use(cookieParser())
 
 /* Logger */
 app.use(addLogger)
+
+/* swagger */
+
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.1',
+    info: {
+      title: 'Proyecto de Backend - Coderhouse',
+      description: 'Documentación del proyecto de Backend - Coderhouse'
+    },
+  },
+  apis: [`${__dirname}/docs/**/*.yaml`]
+}
+
+const specs = swaggerJSDoc(swaggerOptions)
+app.use('/api/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
 
 /* server */
 server.listen(CONFIG.PORT, () => {
