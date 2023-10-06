@@ -23,6 +23,13 @@ export const authorization = (authorizationType) => {
       } else {
         res.status(403).send("Acceso denegado. Debes cerrar sesión.")
       }
+    }  else if (authorizationType === "PREMIUM") {
+      // Esta validación permite el paso solo a usuarios PREMIUM
+      if (user.role === 'premium') {
+        next()
+      } else {
+        res.status(403).send("Acceso denegado. Debes ser usuario Premium.")
+      }
     } else {
       // Si se proporciona un tipo de autorización no válido, responder con un error 400
       res.status(400).send("Tipo de autorización no válido.")

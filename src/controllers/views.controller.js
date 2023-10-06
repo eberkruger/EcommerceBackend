@@ -78,6 +78,18 @@ const profile = async (req, res) => {
   })
 }
 
+const resetPassword = async (req, res) => {
+  res.render('resetPassword', {
+    style: 'home.css'
+  })
+}
+
+const requestResetPassword = async (req, res) => {
+  res.render('requestResetPassword', {
+    style: 'home.css'
+  })
+}
+
 export default {
   getAllProducts,
   realtimeproducts,
@@ -85,5 +97,7 @@ export default {
   chat,
   register,
   login,
-  profile
+  profile,
+  resetPassword,
+  requestResetPassword
 }

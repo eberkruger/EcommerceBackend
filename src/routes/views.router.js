@@ -1,6 +1,7 @@
 import { Router } from "express"
 import { authorization } from "../config/auth.config.js"
 import viewsController from "../controllers/views.controller.js"
+import passport from "passport"
 
 const router = Router()
 
@@ -20,5 +21,7 @@ router.get('/chat', viewsController.chat)
 router.get('/register', viewsController.register)
 router.get('/login', viewsController.login)
 router.get('/profile', authorization('USER'), viewsController.profile)
+router.get('/resetPassword', passport.authenticate('jwtRequestPassword', {session: false, failureRedirect: 'requestResetPassword'}), viewsController.resetPassword)
+router.get('/requestResetPassword', viewsController.requestResetPassword)
 
 export default router;

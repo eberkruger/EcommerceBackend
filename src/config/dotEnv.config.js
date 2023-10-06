@@ -13,6 +13,10 @@ const CONFIG = {
   ADMIN_PWD : process.env.ADMIN_PWD,
   PERSISTENCE : process.env.PERSISTENCE,
   NODE_ENV : process.env.NODE_ENV,
+  JWT_COOKIE : process.env.JWT_COOKIE,
+  JWT_SECRET : process.env.JWT_SECRET,
+  NODEMAILER_EMAIL : process.env.NODEMAILER_EMAIL,
+  NODEMAILER_PWD : process.env.NODEMAILER_PWD,
 }
 
 export default CONFIG

@@ -2,11 +2,13 @@ import passport from 'passport'
 import local from 'passport-local'
 import GitHubStrategy from 'passport-github2'
 import userModel from '../models/schema/users.schema.js'
-//import UsersManagerDB from '../dao/mongo/usersManager.js'
 import { getDAOS } from '../models/daos/index.daos.js'
 import { createHash, isValidPassword } from '../utils/utils.js'
 import CONFIG from './dotEnv.config.js'
+import jwt from 'passport-jwt'
 
+const JWTStrategy = jwt.Strategy
+const ExtractJWT = jwt.ExtractJwt
 const LocalStrategy = local.Strategy
 const { usersDAO } = getDAOS()
 
@@ -94,6 +96,46 @@ const initializePassport = () => {
       done(error)
     }
   }))
+
+  passport.use('jwt', new JWTStrategy({
+    jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]),
+    secretOrKey: CONFIG.JWT_SECRET
+  },
+    async (jwtPayload, done) => {
+      try {
+        return done(null, jwtPayload)
+      } catch (error) {
+        return done(error)
+      }
+    }))
+
+  passport.use('jwtRequestPassword', new JWTStrategy({
+    jwtFromRequest: ExtractJWT.fromExtractors([queryExtractor]),
+    secretOrKey: CONFIG.JWT_SECRET
+  },
+    async (jwtPayload, done) => {
+      try {
+        return done(null, jwtPayload)
+      } catch (error) {
+        return done(error)
+      }
+    }))
+
+  const cookieExtractor = (req) => {
+    let token = null
+    if (req && req.cookies) {
+      token = req.cookies[CONFIG.JWT_COOKIE]
+    }
+    return token
+  }
+
+  const queryExtractor = (req) => {
+    let token = null
+    if (req.query) {
+      token = req.query.token
+    }
+    return token
+  }
 
   // Funciones para serializar y deserializar usuarios en Passport
   passport.serializeUser((user, done) => { done(null, user._id) })

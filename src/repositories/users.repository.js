@@ -14,8 +14,13 @@ export default class UsersRepository {
     return dtoResult
   }
 
-  getUser = async (email) => {
-    const result = await this.dao.getUser(email)
+  getUser = async (email, cart) => {
+    const result = await this.dao.getUser(email, cart)
+    return result
+  }
+
+  getUserById = async (id) => {
+    const result = await this.dao.getUserById(id)
     return result
   }
 
@@ -26,6 +31,16 @@ export default class UsersRepository {
 
   isEmailRegistered = async (email) => {
     const result = await this.dao.isEmailRegistered(email)
+    return result
+  }
+
+  updatePassword = async (email, newPassword) => {
+    const result = await this.dao.updatePassword(email, newPassword)
+    return result
+  }
+
+  updateUserRole = async (id, newRole) => {
+    const result = await this.dao.updateUserRole(id, newRole)
     return result
   }
 }

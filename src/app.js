@@ -6,6 +6,7 @@ import http from 'http'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import passport from 'passport'
+import cookieParser from 'cookie-parser'
 
 import __dirname from './utils.path.js'
 import routers from './routes/index.router.js'
@@ -34,6 +35,9 @@ app.use(express.urlencoded({ extended: true }))
 app.engine('handlebars', handlebars.engine())
 app.set('view engine', 'handlebars')
 app.set('views', `${__dirname}/views`)
+
+/* cookies */
+app.use(cookieParser())
 
 /* Logger */
 app.use(addLogger)

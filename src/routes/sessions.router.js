@@ -21,6 +21,8 @@ router.get('/github/callback', passport.authenticate('github', { failureRedirect
 
 router.get('/logout', usersController.logout)
 
-router.get('/current', authorization('USER'), usersController.current)
+router.get('/current', authorization('USER'), passport.authenticate('jwt', { session: false }), usersController.current)
+
+router.post('/premium/:uid', passport.authenticate('jwt', { session: false }), usersController.changeRole)
 
 export default router
